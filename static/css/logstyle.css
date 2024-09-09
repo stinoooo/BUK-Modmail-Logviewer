@@ -6,28 +6,18 @@
     font-weight: 300;
     src: url(https://discordapp.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff) format('woff');
 }
-  
 @font-face {
     font-family: Whitney;
     font-style: normal;
     font-weight: 500;
     src: url(https://discordapp.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff) format('woff');
 }
-  
 @font-face {
     font-family: Whitney;
     font-style: medium;
     font-weight: 600;
     src: url(https://discordapp.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff) format('woff');
 }
-  
-@font-face {
-    font-family: WhitneyMedium;
-    font-style: medium;
-    font-weight: 600;
-    src: url(https://discordapp.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff) format('woff');
-}
-  
 @font-face {
     font-family: Whitney;
     font-style: bold;
@@ -42,16 +32,13 @@ body {
     font-size: 16px;
 }
 
+/* Links */
 a {
     text-decoration: none;
     color: #7289da;
 }
 
-img {
-    object-fit: contain;
-}
-
-/* Inline preformatted text */
+/* Preformatted Text */
 .pre {
     font-family: Menlo, Consolas, Monaco, monospace;
     background-color: #2F3136;
@@ -79,54 +66,116 @@ img {
 
 /* === NAVIGATION STYLES === */
 .nav-wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-fixed nav {
-    background-color: #2F3136; /* Same color scheme for consistency */
+    background-color: #2F3136;
     border-radius: 0 0 12px 12px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .brand-logo {
     font-family: 'Whitney', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.7); /* Lighter text for contrast */
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
 }
 
 .nav-wrapper ul a {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7); /* Matches body text */
-    transition: color 0.3s ease;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-wrapper ul a:hover {
-    color: #7289da;  /* Discord-like blue */
+    color: #FFFFFF;
+    background-color: #7289DA;
 }
 
-.sidenav-trigger {
+/* === LOG INFO PANEL === */
+.log-info-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #37393e;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
+}
+
+.log-info-panel .log-details {
     display: flex;
     align-items: center;
-    color: rgba(255, 255, 255, 0.7);
 }
 
-.sidenav {
-    background-color: #2F3136;
-    padding-top: 20px;
+.log-info-panel .log-title {
+    font-size: 1.4rem;
+    color: #E0E0E0;
+    font-weight: 600;
+    margin-right: 20px;
 }
 
-.sidenav li a {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border-radius: 8px;
+.log-info-panel .switch-container {
+    display: flex;
+    align-items: center;
 }
 
-.sidenav li a:hover {
-    background-color: #7289da; /* Matches link hover color */
-    color: #FFFFFF;
-    transition: background-color 0.3s ease;
+.switch-container label {
+    font-size: 1rem;
+    color: #E0E0E0;
+    margin-right: 10px;
+}
+
+/* === SWITCH === */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch .lever {
+    position: absolute;
+    background-color: #bbb;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    width: 100%;
+    height: 100%;
+}
+
+.switch .lever:before {
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    transition: 0.4s;
+}
+
+.switch input:checked + .lever {
+    background-color: #7289da;
+}
+
+.switch input:checked + .lever:before {
+    transform: translateX(16px);
 }
 
 /* === TAGS AND BADGES === */
@@ -134,8 +183,8 @@ img {
     background: rgba(46, 204, 112, 0.75);
     font-size: 10px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.774)!important;
-    padding: 1px 5px;
+    color: rgba(255, 255, 255, 0.8)!important;
+    padding: 2px 5px;
     border-radius: 3px;
     text-transform: uppercase;
 }
@@ -144,7 +193,7 @@ img {
     font-size: 10px;
     font-weight: 600;
     color: #fff!important;
-    padding: 1px 5px;
+    padding: 2px 5px;
     border-radius: 3px;
     text-transform: uppercase;
 }
@@ -162,8 +211,7 @@ img {
     background: #37393e;
     border-radius: 8px;
     padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .chatlog__message-group {
@@ -211,19 +259,7 @@ img {
     font-size: 1rem;
 }
 
-.chatlog__attachment-thumbnail {
-    margin-top: 5px;
-    max-width: 200px;
-    border-radius: 5px;
-}
-
-.chatlog__edited-timestamp {
-    font-size: 0.75rem;
-    color: #72767d;
-    margin-left: 5px;
-}
-
-/* === EMBED STYLING === */
+/* Embed Styling */
 .chatlog__embed {
     display: flex;
     margin-top: 10px;
@@ -245,19 +281,13 @@ img {
     background-color: rgba(46, 48, 54, 0.3);
 }
 
-.chatlog__embed-description {
-    font-size: 14px;
-    color: #b9bbbe;
-    margin-top: 5px;
-}
-
 /* Attachments */
 .chatlog__attachment {
     margin: 5px 0;
     padding: 5px;
 }
 
-/* === REACTIONS === */
+/* Reactions */
 .chatlog__reactions {
     display: flex;
     margin-top: 5px;
@@ -281,74 +311,4 @@ img {
 .chatlog__reaction-count {
     font-size: 12px;
     color: #ffffff;
-}
-
-/* === TOOLTIP === */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* === SWITCH === */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 36px;
-    height: 20px;
-}
-
-.switch input {
-    display: none;
-}
-
-.switch .lever {
-    position: absolute;
-    background-color: #bbb;
-    border-radius: 34px;
-    cursor: pointer;
-    transition: background-color 0.4s;
-    width: 100%;
-    height: 100%;
-}
-
-.switch .lever:before {
-    content: "";
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 4px;
-    left: 4px;
-    width: 12px;
-    height: 12px;
-    transition: 0.4s;
-}
-
-.switch input:checked + .lever {
-    background-color: #7289da;
-}
-
-.switch input:checked + .lever:before {
-    transform: translateX(16px);
 }
