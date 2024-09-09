@@ -2,244 +2,247 @@
 <html lang="en">
 
 <head>
-    <title>Log Entry</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{ log_entry.thread_messages | length }} messages {% if log_entry.open %}(Open){% else %}(Closed){% endif %}" property="og:site_name">
     <meta content="Recipient: {{ log_entry.recipient | string | e }}" property="og:title">
-    <meta content='{{ log_entry.recipient.avatar_url }}' property='og:image'>
-    <meta content='Created {{ log_entry.human_created_at }}' property='og:image'>
+    <meta content="{{ log_entry.recipient.avatar_url }}" property="og:image">
+    <meta content="Created {{ log_entry.human_created_at }}" property="og:image">
 
-    <link href="/static/css/logstyle.css" rel="stylesheet">
-    <link href="/static/css/solarized-dark.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/css/logstyle.css">
+    <link rel="stylesheet" href="/static/css/materialize.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Log Entry - Professional View</title>
 
-    <link rel="stylesheet" href="/static/css/solarized-dark.css">
-    <script src="/static/js/highlight.pack.js"></script>
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/materialize.css" media="screen,projection" >
-    <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="/static/css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2F3136;
+            font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 90%;
+            margin: auto;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #37393E;
+            border-radius: 8px;
+        }
+
+        .info-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+        }
+
+        .info-details {
+            margin-left: 20px;
+        }
+
+        .info-details h5 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+
+        .info-details p {
+            margin: 5px 0;
+            color: #b0bec5;
+        }
+
+        .message-container {
+            margin-top: 20px;
+        }
+
+        .message-group {
+            display: flex;
+            padding: 15px;
+            background-color: #40444B;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .message-group img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-content h6 {
+            margin: 0;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .message-content p {
+            margin: 5px 0;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .message-content span.timestamp {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .internal {
+            display: none;
+        }
+
+        /* Toggle switch styling */
+        .switch {
+            display: inline-block;
+            width: 36px;
+            height: 20px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .lever {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+
+        .lever:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .lever {
+            background-color: #7289da;
+        }
+
+        input:checked + .lever:before {
+            transform: translateX(16px);
+        }
+
+        /* Rounded levers */
+        .lever.round {
+            border-radius: 34px;
+        }
+
+        .lever.round:before {
+            border-radius: 50%;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+
+    <script>
+        // Toggle function to show/hide internal messages
+        function toggleInternalMessages() {
+            const internalMessages = document.querySelectorAll('.internal');
+            internalMessages.forEach(message => {
+                message.style.display = message.style.display === 'none' ? 'flex' : 'none';
+            });
+        }
+    </script>
 </head>
 
 <body>
 
-        {% block navbar %}
-		
-		{% include 'navbar.html' %}
+    <!-- Navbar Block -->
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
 
-		{% endblock %}
-    
-    
-<div class='entry'>
+    <div class="container">
 
-    <br>
-    <div class="info">
-        <div class="info__guild-icon-container">
-            <img class="info__guild-icon hoverable"
-                 src="{{ log_entry.recipient.avatar_url }}"
-                 onerror="this.src='{{ log_entry.recipient.default_avatar_url }}'"
-                 alt="avatar">
-        </div>
-        <div class="info__metadata">
-            <div class="info__guild-name"><span style='color:white'>Thread Logs</span> {% if log_entry.open %}
-                (Open){% else %}(Closed){% endif %}</div>
-            <div title="{{ log_entry.recipient.id }}" class="info__channel-topic tooltip"><span style="color:white">Recipient:
-                <b>{{ log_entry.recipient.name | e }}</b></span>#{{ log_entry.recipient.discriminator }}
-                <span class='tooltiptext pre pre--inline'>{{ log_entry.recipient.id }}</span>
-            </div>
-            {% if log_entry.recipient != log_entry.creator %}
-            <br>
-                <div class="info__channel-topic tooltip"><span style="color:white">Creator:
-                    <b>{{ log_entry.creator.name | e }}</span></b>#{{ log_entry.creator.discriminator }}
-                    <span class='tooltiptext pre pre--inline'>{{ log_entry.creator.id }}</span>
-                </div>
-            {% endif %}
+        <!-- Recipient and Thread Info -->
+        <div class="info-card">
+            <img src="{{ log_entry.recipient.avatar_url }}" alt="Recipient Avatar">
+            <div class="info-details">
+                <h5>Recipient: {{ log_entry.recipient.name }}#{{ log_entry.recipient.discriminator }}</h5>
+                <p>Thread Status: {% if log_entry.open %}Open{% else %}Closed{% endif %}</p>
+                <p>Messages: {{ log_entry.thread_messages | length }}</p>
 
-            <div class="info__channel-message-count">{{ log_entry.thread_messages | length }}
-                messages 
+                <!-- Internal Toggle -->
                 {% if log_entry.internal_messages %}
-            
-                <div style="display: flex; justify-content: flex-end">
-                <label class="switch" title="Toggle viewing internal messages">
-                        <input id='internal_toggle' type="checkbox" onclick="toggleInternalMessages()">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" onclick="toggleInternalMessages()">
                         <span class="lever round"></span>
                     </label>
+                    <span style="color: #ffffff; vertical-align: middle;">Show Internal Messages</span>
                 </div>
-                
                 {% endif %}
             </div>
         </div>
-    </div>
 
-    <div class="chatlog">
-        {% for group in log_entry.message_groups %}
-            <div class="{{group.type}} chatlog__message-group active_hover" onclick="hoverIt(this)" >
-                <div class="chatlog__author-avatar-container">
-                        <img class="chatlog__author-avatar"
-                             src="{{ group.author.avatar_url }}"
-                             onerror="this.src='{{ group.author.default_avatar_url }}'"
-                             alt="avatar"/>
-                </div>
+        <!-- Messages Section -->
+        <div class="message-container">
+            {% for group in log_entry.message_groups %}
+            <div class="message-group {% if group.type == 'internal' %}internal{% endif %}">
+                <img src="{{ group.author.avatar_url }}" alt="Author Avatar">
 
-                <div class="chatlog__messages">
-                    <span class="chatlog__author-name" title="{{ group.author | string | e }}">{{ group.author.name | e }}</span>
-                    {% if group.type == 'thread_message' %}
-                    {% if group.author.mod %}
-                        <span class="mod-tag">Reply</span>
-                    {% endif %}
-                    {% elif group.type == 'anonymous' %}
-                    <span class='mod-tag'>Anon</span>
-                    {% elif group.type == 'internal' %}
-                    <span class='internal-tag'>Internal</span>
-                    {% else %}
-                        <span>took a note</span><span class="system-tag">note</span>
-                    {% endif %}
-                    <span class="chatlog__timestamp">{{ group.created_at }}</span>
+                <div class="message-content">
+                    <h6>{{ group.author.name }} {% if group.type == 'internal' %}<span style="color: #e28f23;">(Internal)</span>{% endif %}</h6>
                     {% for message in group.messages %}
-                        {% if message.content %}
-                            <div class="chatlog__content" id="{{ message.id }}">
-                                {{ message.content }}
-                                {% if message.edited %}
-                                <span class="chatlog__edited-timestamp">(edited)</span>
-                                {% endif %}
-                            </div>
-
-                        {% endif %}
-                        {% for attachment in message.attachments %}
-                            <div class="chatlog__attachment" id="{{ message.id }}">
-                                <a href="{{ attachment.url }}">
-                                    {% if attachment.is_image %}
-                                    <img class="chatlog__attachment-thumbnail" src="{{ attachment.url }}" alt="attachment"/>
-                                    {% else %}
-                                    Attachment: {{ attachment.filename | e }}
-                                    {% endif %}
-                                </a>
-                            </div>
-                        {% endfor %}
+                    <p>{{ message.content }}</p>
+                    {% if message.edited %}
+                    <span class="timestamp">(edited)</span>
+                    {% endif %}
                     {% endfor %}
+                    <span class="timestamp">{{ group.created_at }}</span>
                 </div>
             </div>
-        {% endfor %}
-        {% if not log_entry.open %}
-            <div class="chatlog__message-group close">
-                <div class="chatlog__author-avatar-container">
-                    <img class="chatlog__author-avatar"
-                         src="{{ log_entry.system_avatar_url }}" alt="avatar">
-                </div>
-                <div class="chatlog__messages">
-                    <span class="chatlog__author-name"
-                          title="{{ log_entry.closer | string | e }}">{{ log_entry.closer.name | e }}</span>
-                    {% if log_entry.closer.mod %}
-                        <span>closed the thread</span>
-                        <span class="system-tag">System</span>
-                    {% endif %}
-                    <span class="chatlog__timestamp">{{ log_entry.human_closed_at | e }}</span>
-                    {% if log_entry.close_message %}
-                        <div class="chatlog__content">
-                            {{ log_entry.close_message }}
-                        </div>
-                    {% endif %}
+            {% endfor %}
+
+            {% if not log_entry.open %}
+            <div class="message-group close">
+                <img src="{{ log_entry.system_avatar_url }}" alt="System Avatar">
+                <div class="message-content">
+                    <h6>{{ log_entry.closer.name }} <span style="color: #7289da;">(System)</span></h6>
+                    <p>Closed the thread</p>
+                    <span class="timestamp">{{ log_entry.human_closed_at }}</span>
                 </div>
             </div>
-        {% endif %}
+            {% endif %}
+        </div>
+
     </div>
-</div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Created by bossman for BUK's Moderation Team.
+    </div>
+
+    <!-- Materialize Initialization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-
-        function hoverIt(elem) {
-            for (let child of elem.children[1].children) {
-                if (child.classList.contains('chatlog__content') || child.classList.contains('chatlog__attachment')) {
-                    let should_add = false
-                    if (!elem.classList.contains('perma_hover')) {
-                        should_add = true
-                    }
-                    removePermaHover()
-                    if (should_add) {
-                        history.pushState(null, null, '#' + child.id);
-                        elem.classList.add('perma_hover')
-                    }
-                    return 
-                }
-            }
-        }
-
-        function highlightMessage() {
-
-            let message_id = document.location.hash.split('#')[1]
-            if (message_id) {
-                msg = document.getElementById(message_id)
-                if (msg) {
-                    let group = msg.parentElement.parentElement
-                    group.classList.add('perma_hover')
-                    return group
-                }
-            }
-        } 
-
-        function removePermaHover(elem) {
-            for (let elem of document.getElementsByClassName('perma_hover')) {
-                elem.classList.remove('perma_hover')
-            }
-            history.pushState(null, null, window.location.href.split('#')[0])
-        }
-
-        window.onhashchange = highlightMessage;
-
-        function scrollToElement(pageElement) {          
-                let y = pageElement.getBoundingClientRect().top + window.scrollY - 70
-                window.scroll({
-                    top: y,
-                    behavior: 'smooth'
-                    });
-        }
-
-
-        let messages = document.getElementsByClassName('internal')
-
-        for (let m of messages) {
-            m.style.display = "none";
-        }
-
-
-        let initial_group = highlightMessage()
-        if (initial_group) {
-
-            if (initial_group.classList.contains('internal')) {
-                toggle = document.getElementById('internal_toggle')
-                toggle.click()
-            }
-            scrollToElement(initial_group)
-        }
-
-        $(document).ready(function() {
-            $('.pre--multiline').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        });
-
-        function toggleInternalMessages() {   
-            let messages = document.getElementsByClassName('internal')
-            for (let m of messages) {
-                if (m.style.display === "none") {
-                    m.style.display = "flex";
-                } else {
-                    m.style.display = "none";
-                }
-            }
-        }
-
-    </script>
-        
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script>
         M.AutoInit();
-        $('.dropdown-trigger').dropdown({coverTrigger: false});
-        </script>
+    </script>
+
 </body>
 </html>
