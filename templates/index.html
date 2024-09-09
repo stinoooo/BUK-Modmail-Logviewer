@@ -2,18 +2,101 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Main Container -->
 <div class="center-align">
+    <!-- Animated LOGVIEWER Title -->
     <div class="card-panel hoverable" id="main-card" style="padding: 30px; margin-top: 50px;">
-        <h1 class="animated fadeInDown" id="dashbots">Logviewer</h1>
-        <h5 class="header col s12 light grey-text text-darken-3" style="margin-bottom: 30px;">View Modmail ticket transcripts for BUK's Moderation Team.</h5>
+        <h1 class="animated fadeInDown" id="dashbots" style="font-size: 4rem;">
+            <span class="text-animated">L</span>
+            <span class="text-animated">O</span>
+            <span class="text-animated">G</span>
+            <span class="text-animated">V</span>
+            <span class="text-animated">I</span>
+            <span class="text-animated">E</span>
+            <span class="text-animated">W</span>
+            <span class="text-animated">E</span>
+            <span class="text-animated">R</span>
+        </h1>
+        <h5 class="header col s12 light grey-text text-darken-3" style="margin-bottom: 30px;">BUK's Moderation Tool for Viewing Modmail Ticket Transcripts</h5>
         
-        <!-- Additional animations and modernized appearance -->
+        <!-- Section for additional information -->
+        <div class="info-section" style="margin-top: 30px;">
+            <div class="row">
+                <!-- Info Block 1 -->
+                <div class="col s12 m4">
+                    <div class="card-panel hoverable info-block">
+                        <h5 class="light">Secure Ticket Storage</h5>
+                        <p>All Modmail ticket transcripts are securely stored and accessible to the BUK Moderation Team.</p>
+                    </div>
+                </div>
+                <!-- Info Block 2 -->
+                <div class="col s12 m4">
+                    <div class="card-panel hoverable info-block">
+                        <h5 class="light">Efficient Moderation</h5>
+                        <p>Designed to streamline moderation efforts, making the process faster and more organized.</p>
+                    </div>
+                </div>
+                <!-- Info Block 3 -->
+                <div class="col s12 m4">
+                    <div class="card-panel hoverable info-block">
+                        <h5 class="light">User-Friendly Interface</h5>
+                        <p>An intuitive design ensures you can easily navigate and manage all Modmail tickets with ease.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
     <!-- Footer with credits -->
     <div class="footer-credit">
         Created by <span class="discord">bossman</span> for BUK's Moderation Team.
     </div>
 </div>
+
+<!-- Custom CSS for animations and visual elements -->
+<style>
+    .text-animated {
+        display: inline-block;
+        animation: bounce 0.5s ease-in-out infinite alternate;
+    }
+
+    .text-animated:nth-child(odd) {
+        animation-delay: 0.1s;
+    }
+
+    .text-animated:nth-child(even) {
+        animation-delay: 0.2s;
+    }
+
+    @keyframes bounce {
+        to {
+            transform: translateY(-10px);
+        }
+    }
+
+    .info-block {
+        background-color: #2F3136;
+        border-radius: 10px;
+        color: #E0E0E0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-block:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .discord-btn {
+        background-color: #7289DA;
+        color: white;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .discord-btn:hover {
+        background-color: #5865F2;
+        transform: scale(1.05);
+    }
+</style>
 
 {% endblock %}
