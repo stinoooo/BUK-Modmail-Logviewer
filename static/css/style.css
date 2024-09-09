@@ -23,102 +23,76 @@ body {
 }
 
 /* === NAVIGATION STYLES === */
-nav {
-  background-color: #2F3136; /* Slight contrast from the body background */
-  padding: 10px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between; /* Ensures the logo is on the left, and button is on the right */
+    align-items: center;
+    padding: 0 20px;
 }
 
-.nav-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar-fixed nav {
+    background-color: #2F3136; /* Background color of the navbar */
+    border-radius: 0 0 12px 12px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .brand-logo {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #E0E0E0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    font-family: 'Whitney', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8); /* Color for the logo text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 10px; /* Adjusts spacing for the logo */
 }
 
 .nav-wrapper ul {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
 }
 
 .nav-wrapper ul li {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .nav-wrapper ul a {
-  font-size: 1.1rem;
-  color: #E0E0E0;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: color 0.3s ease, background-color 0.3s ease;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-wrapper ul a:hover {
-  color: #FFFFFF;
-  background-color: #5865F2;  /* Discord-like blue for hover effect */
+    color: #FFFFFF;
+    background-color: #7289DA; /* Discord-like blue for hover effect */
 }
 
-.sidenav-trigger {
-  display: flex;
-  align-items: center;
-  color: #E0E0E0;
-}
-
-.sidenav {
-  background-color: #2F3136;
-  padding-top: 20px;
-}
-
-.sidenav li a {
-  color: #E0E0E0;
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-
-.sidenav li a:hover {
-  background-color: #5865F2;
-  color: #FFFFFF;
-  transition: background-color 0.3s ease;
-}
-
-/* Discord Button Styles */
+/* === DISCORD BUTTON IN NAV === */
 .discord-btn {
-  background-color: #5865F2;
-  color: #FFF;
-  padding: 12px 24px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  border-radius: 50px; /* Creates a pill-shaped button for a modern look */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #5865F2;
+    color: #FFF;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px; /* Modern pill-shaped button */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-right: 10px; /* Keeps the button at the far right */
 }
 
 .discord-btn:hover {
-  background-color: #4E5CDB; /* Darker Discord-like blue on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    background-color: #4E5CDB; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
-.discord-btn i {
-  margin-right: 10px;
-  font-size: 1.2rem;
-  vertical-align: middle;
-}
 /* Card Styles */
 .card-panel {
   background-color: #2C2F33;
