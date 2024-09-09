@@ -1,89 +1,92 @@
 
-/* Custom Modern Stylesheet */
+/* Custom Modern Stylesheet - Discord-inspired */
 
 /* General Body Styles */
 body {
-  background-color: #1C1E22;  /* Darker background for a sleek modern look */
-  color: #E0E0E0;  /* Light text for better contrast */
+  background-color: #1E1F22;  /* Discord's dark background */
+  color: #E0E0E0;  /* Light text for contrast */
   font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+/* Rounded Corners and Animations */
+.card-panel, .btn, nav, input, textarea {
+  border-radius: 12px;
+}
+
+.card-panel, .btn {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card-panel:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 /* Navigation Styles */
 nav, #nav-mobile, #nav-dash {
-  background-color: #292B2F; /* A sleek, neutral dark color for navbar */
+  background-color: #2F3136;  /* Slightly lighter than the body for separation */
+  border-radius: 0 0 12px 12px;
 }
 
-#dropdown1 {
-  background-color: #2C2F33; /* Neutral grey for dropdown */
+nav ul a {
+  font-size: 1.2rem;
+  color: #E0E0E0;
+}
+
+nav ul a:hover {
+  color: #5865F2;  /* Discord-like blue */
 }
 
 /* Button Styles */
 .btn {
-  background-color: #5865F2; /* Slightly lighter purple for a clean look */
-  border-radius: 5px;
+  background-color: #5865F2; /* Discord blue */
   text-transform: uppercase;
-  transition: background-color 0.3s ease;
-}
-
-.btn:visited {
-  background-color: #4E5CDB;
+  padding: 10px 20px;
+  border-radius: 8px;
 }
 
 .btn:hover {
-  background-color: #3B49D0;
+  background-color: #4E5CDB;
+  transform: scale(1.05);
 }
 
 /* Main Heading */
 #dashbots {
   font-family: 'Poppins', sans-serif;
-  color: #7289DA; /* Maintain original Discord-style purple */
+  color: #7289DA; /* Discord-like purple */
   user-select: none;
   font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 /* Card Styles */
 .card-panel {
-  background-color: #2F3136; /* Dark grey card background */
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  background-color: #2C2F33;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .card-panel:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Typography */
 h1, h5 {
   color: #E0E0E0;
 }
 
+/* Typography */
 h5 {
   font-weight: 300;
 }
 
-/* Search Bar */
-.search-bar {
-  padding: 10px;
-  background-color: #40444B;
-  border-radius: 8px;
-  margin: 20px 0;
-  display: flex;
-  align-items: center;
+/* Animations for Buttons */
+.btn {
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
-.search-bar input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #2F3136;
-  color: #E0E0E0;
-  font-size: 16px;
-}
-
-.search-bar input:focus {
-  outline: none;
-  background-color: #3B3E45;
+.btn:active {
+  transform: scale(0.98);
 }
 
 /* Discord Brand Color */
@@ -91,13 +94,10 @@ h5 {
   color: #5865F2;
 }
 
-/* Responsive Padding */
-@media only screen and (max-width : 992px) {
-  .nav-dash, .dash-content {
-    padding-left: 0;
-  }
-}
-
-.nav-dash, .dash-content {
-  padding-left: 300px;
+/* Footer Credit */
+.footer-credit {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #E0E0E0;
 }
