@@ -99,21 +99,10 @@ body {
   vertical-align: middle;
 }
 
-.discord-btn:hover {
-    background-color: #4E5CDB;
-    transform: scale(1.05);
-}
-
-.discord-btn i {
-    margin-right: 8px;
-    font-size: 1.2rem;
-    vertical-align: middle;
-}
-
 /* Main Heading */
 #dashbots {
   font-family: 'Poppins', sans-serif;
-  color: #7289DA; /* Discord-like purple */
+  color: #7289DA;
   user-select: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -124,14 +113,18 @@ body {
   background-color: #2C2F33;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .card-panel:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 h1, h5 {
   color: #E0E0E0;
+  margin: 0 0 10px;
 }
 
 /* Typography */
