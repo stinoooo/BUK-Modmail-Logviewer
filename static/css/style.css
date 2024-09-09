@@ -8,6 +8,15 @@ body {
   transition: background-color 0.3s ease;
 }
 
+/* Background with grid of dots */
+.center-align {
+    position: relative;
+    overflow: hidden;
+    background-color: #1E1F22; /* Discord dark background */
+    background-image: radial-gradient(circle, #5865F2 1px, transparent 1px);
+    background-size: 20px 20px; /* Size of the grid and dots */
+}
+
 /* Rounded Corners and Animations */
 .card-panel, .btn, nav, input, textarea {
   border-radius: 12px;
