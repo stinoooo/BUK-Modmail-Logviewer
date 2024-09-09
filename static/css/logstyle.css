@@ -140,7 +140,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: #37393e;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -150,6 +150,7 @@ a {
 .log-info-panel .log-details {
     display: flex;
     align-items: center;
+    flex: 1; /* Take up space to push the switch to the right */
 }
 
 .log-info-panel .log-title {
@@ -159,15 +160,17 @@ a {
     margin-right: 20px;
 }
 
-.log-info-panel .switch-container {
+.switch-container {
     display: flex;
     align-items: center;
+    justify-content: flex-end; /* Ensures the switch is aligned to the right */
+    flex: 1; /* Make the switch container take the remaining space */
 }
 
 .switch-container label {
     font-size: 1rem;
     color: #E0E0E0;
-    margin-right: 10px;
+    margin-right: 10px; /* Add space between the label and the switch */
 }
 
 /* === SWITCH === */
