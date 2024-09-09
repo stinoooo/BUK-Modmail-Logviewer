@@ -8,13 +8,42 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Background with grid of dots */
+/* Full-screen dot grid background */
 .center-align {
     position: relative;
     overflow: hidden;
     background-color: #1E1F22; /* Discord dark background */
     background-image: radial-gradient(circle, #5865F2 1px, transparent 1px);
     background-size: 20px 20px; /* Size of the grid and dots */
+    height: 100vh; /* Cover the full height of the viewport */
+    width: 100vw; /* Cover the full width of the viewport */
+}
+
+/* Animate the dots with fading in and out */
+.center-align::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, #5865F2 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0; /* Start the animation with no visibility */
+    animation: fadeDots 5s ease-in-out infinite; /* Infinite fading animation */
+}
+
+/* Keyframes for the fading effect */
+@keyframes fadeDots {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1; /* Fully visible at 50% of the animation */
+    }
+    100% {
+        opacity: 0; /* Fade out at the end */
+    }
 }
 
 /* Rounded Corners and Animations */
