@@ -8,6 +8,12 @@ body {
   padding: 0;
 }
 
+/* Ensure no spacing around the body */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 /* === Shared Rounded Corners and Animations === */
 .card-panel, .btn, nav, input, textarea {
   border-radius: 12px;
@@ -21,11 +27,11 @@ body {
 
 /* === Navigation Styles === */
 .nav-wrapper {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 64px;
 }
 
 .navbar-fixed nav {
@@ -38,7 +44,15 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   color: #E0E0E0;
-  line-height: 56px;  /* Ensures vertical centering within the navbar */
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+ul.right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .nav-wrapper ul a {
@@ -48,7 +62,7 @@ body {
 }
 
 .nav-wrapper ul a:hover {
-  color: #5865F2;  /* Discord-like blue */
+  color: #5865F2;
 }
 
 /* === Mobile Navigation === */
@@ -104,13 +118,14 @@ body {
 /* === Typography and Headings === */
 h1, h5 {
   color: #E0E0E0;
+  margin: 0 0 10px;
 }
 
 h5 {
   font-weight: 300;
 }
 
-/* === Animations for Buttons === */
+/* === Button Animations === */
 .btn {
   transition: background-color 0.3s, transform 0.2s ease;
 }
@@ -130,10 +145,9 @@ h5 {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* === Main Heading Style === */
 #dashbots {
   font-family: 'Poppins', sans-serif;
-  color: #7289DA;  /* Discord-like purple */
+  color: #7289DA;
   user-select: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -147,19 +161,7 @@ h5 {
   color: #E0E0E0;
 }
 
-/* === Discord Brand Color === */
-.discord {
-  color: #5865F2;
-}
-
-/* === Additional Utility Styles === */
-/* Ensure no spacing around the body */
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
-/* Style for input fields and textareas */
+/* === Input Fields === */
 input, textarea {
   padding: 12px;
   font-size: 1rem;
@@ -172,7 +174,7 @@ input::placeholder, textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Custom scrollbar for modern look */
+/* === Custom Scrollbar === */
 ::-webkit-scrollbar {
   width: 10px;
 }
