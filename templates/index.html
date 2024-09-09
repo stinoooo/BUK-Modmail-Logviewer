@@ -4,9 +4,39 @@
 
 <div class="center-align">
     <div class="card-panel hoverable" id="main-card" style="padding: 30px; margin-top: 50px;">
-        <h1 class="animated fadeInDown" id="dashbots" style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #2C3E50;">Logviewer</h1>
+        <h1 class="animated fadeInDown" id="dashbots">Logviewer</h1>
         <h5 class="header col s12 light grey-text text-darken-3" style="margin-bottom: 30px;">Display Modmail log entries for BUK.</h5>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="log-search" placeholder="Search logs...">
+        </div>
+
+        <!-- Searchable Logs (example for display) -->
+        <div id="log-results">
+            <ul id="logs-list">
+                <li>Log Entry 1</li>
+                <li>Log Entry 2</li>
+                <li>Log Entry 3</li>
+            </ul>
+        </div>
     </div>
 </div>
+
+<script>
+    // Simple search filter
+    document.getElementById('log-search').addEventListener('keyup', function() {
+        var filter = this.value.toLowerCase();
+        var logs = document.querySelectorAll('#logs-list li');
+
+        logs.forEach(function(log) {
+            if (log.textContent.toLowerCase().includes(filter)) {
+                log.style.display = '';
+            } else {
+                log.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 {% endblock %}
