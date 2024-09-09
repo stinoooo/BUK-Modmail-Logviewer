@@ -2,116 +2,18 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Container for the homepage -->
 <div class="center-align">
-    <!-- Main Title with animation -->
     <div class="card-panel hoverable" id="main-card" style="padding: 30px; margin-top: 50px;">
-        <h1 class="animated fadeInDown" id="dashbots" style="font-size: 4rem; position: relative; overflow: hidden;">
-            <span class="text-animated">L</span>
-            <span class="text-animated">O</span>
-            <span class="text-animated">G</span>
-            <span class="text-animated">V</span>
-            <span class="text-animated">I</span>
-            <span class="text-animated">E</span>
-            <span class="text-animated">W</span>
-            <span class="text-animated">E</span>
-            <span class="text-animated">R</span>
-        </h1>
-        <h5 class="header col s12 light grey-text text-darken-3" style="margin-bottom: 30px;">Modmail log viewer for BUK's Moderation Team.</h5>
+        <h1 class="animated fadeInDown" id="dashbots">Logviewer</h1>
+        <h5 class="header col s12 light grey-text text-darken-3" style="margin-bottom: 30px;">View Modmail ticket transcripts for BUK's Moderation Team.</h5>
         
-        <!-- Additional information section -->
-        <div class="info-section" style="margin-top: 20px;">
-            <p style="font-size: 1.2rem; line-height: 1.5;">
-                Welcome to the BUK Modmail Logviewer! This tool is designed to help BUK's Moderation Team view and manage all Modmail ticket transcripts efficiently. With this interface, you can easily browse and track conversations.
-            </p>
-            <p style="font-size: 1.2rem; margin-top: 15px;">
-                Our system ensures all interactions with users are stored securely, allowing you to reference them whenever needed.
-            </p>
-            <!-- Transcript Count from API -->
-            <p>Total Transcripts: <span id="transcripts-count">Loading...</span></p>
-        </div>
+        <!-- Additional animations and modernized appearance -->
     </div>
-
-    <!-- Analytics Section with Chart -->
-    <div class="card-panel hoverable analytics-card" style="padding: 30px; margin-top: 30px;">
-        <h4 style="color: #E0E0E0; font-weight: 600;">Transcript Growth</h4>
-
-        <!-- Graph Placeholder -->
-        <div style="margin-top: 30px;">
-            <canvas id="transcriptGrowthChart"></canvas>
-        </div>
-    </div>
-
+    
     <!-- Footer with credits -->
     <div class="footer-credit">
         Created by <span class="discord">bossman</span> for BUK's Moderation Team.
     </div>
 </div>
-
-<!-- Custom CSS for text animation and analytics section -->
-<style>
-    .text-animated {
-        display: inline-block;
-        animation: bounce 0.5s ease-in-out infinite alternate;
-    }
-
-    .text-animated:nth-child(odd) {
-        animation-delay: 0.1s;
-    }
-
-    .text-animated:nth-child(even) {
-        animation-delay: 0.2s;
-    }
-
-    @keyframes bounce {
-        to {
-            transform: translateY(-10px);
-        }
-    }
-
-    .analytics-card {
-        background-color: #2C2F33;
-        border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
-</style>
-
-<!-- Script to dynamically fetch and display data -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Fetch the transcript count from the API and update the page
-    fetch('/api/transcripts_count')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('transcripts-count').innerText = data.total_transcripts;
-        });
-
-    // Sample data for the growth of transcripts over time (can be dynamically fetched from an API)
-    var ctx = document.getElementById('transcriptGrowthChart').getContext('2d');
-    var transcriptGrowthChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-                label: 'Transcripts Processed',
-                data: [200, 300, 500, 700, 1000, 1245],  // Sample data
-                backgroundColor: 'rgba(88, 101, 242, 0.2)',
-                borderColor: '#5865F2',
-                borderWidth: 2,
-                fill: true,
-                pointRadius: 5,
-                pointHoverRadius: 8
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
 
 {% endblock %}
