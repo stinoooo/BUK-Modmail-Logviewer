@@ -6,6 +6,29 @@ body {
   color: #E0E0E0;  /* Light text for contrast */
   font-family: 'Poppins', sans-serif;
   transition: background-color 0.3s ease;
+  overflow: hidden; /* Prevents scrollbars from appearing due to animated flow lines */
+}
+
+/* SVG Flow Lines - Background Animation */
+.react-flow__pane {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.react-flow__edges path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 0;
+  animation: dash 4s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -200;
+  }
 }
 
 /* Rounded Corners and Animations */
@@ -24,53 +47,53 @@ body {
 
 /* === NAVIGATION STYLES === */
 .nav-wrapper {
-    display: flex;
-    justify-content: center; /* Center the logo */
-    align-items: center;
-    position: relative;
+  display: flex;
+  justify-content: center; /* Center the logo */
+  align-items: center;
+  position: relative;
 }
 
 .brand-logo {
-    position: absolute; /* Absolute positioning to keep the logo centered */
-    left: 50%;
-    transform: translateX(-50%); /* Center the logo horizontally */
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #5865F2; /* Discord's blurple color */
+  position: absolute; /* Absolute positioning to keep the logo centered */
+  left: 50%;
+  transform: translateX(-50%); /* Center the logo horizontally */
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #5865F2; /* Discord's blurple color */
 }
 
 .sidenav-trigger {
-    position: absolute;
-    left: 0;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
 }
 
 ul.right {
-    position: absolute;
-    right: 0;
+  position: absolute;
+  right: 0;
 }
 
 /* === DISCORD BUTTON IN NAV === */
 .discord-btn {
-    background-color: #5865F2;
-    color: #FFF;
-    padding: 12px 24px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 50px; /* Modern pill-shaped button */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    margin-right: 10px; /* Keeps the button at the far right */
+  background-color: #5865F2;
+  color: #FFF;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 50px; /* Modern pill-shaped button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-right: 10px; /* Keeps the button at the far right */
 }
 
 .discord-btn:hover {
-    background-color: #4E5CDB; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  background-color: #4E5CDB; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Card Styles */
@@ -121,27 +144,27 @@ h5 {
 
 /* Main LOGVIEWER Title */
 #dashbots {
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: #5865F2; /* Discord blurple color */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #5865F2; /* Discord blurple color */
 }
 
 .text-animated {
-    display: inline-block;
-    animation: bounce 0.5s ease infinite alternate;
-    font-size: inherit;
-    color: #5865F2; /* Apply the blurple color to each letter */
+  display: inline-block;
+  animation: bounce 0.5s ease infinite alternate;
+  font-size: inherit;
+  color: #5865F2; /* Apply the blurple color to each letter */
 }
 
 /* Optional Bounce Animation for the Letters */
 @keyframes bounce {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-10px); /* Moves the letters slightly up */
-    }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px); /* Moves the letters slightly up */
+  }
 }
 
 /* Animation Delay for Sequential Effects */
