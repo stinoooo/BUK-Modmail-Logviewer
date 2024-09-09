@@ -1,36 +1,21 @@
-/* === General Styles === */
+/* === General Body Styles === */
 body {
-  background-color: #1E1F22;  /* Discord's dark background */
-  color: #E0E0E0;  /* Light text for contrast */
+  background-color: #1E1F22;
+  color: #E0E0E0;
   font-family: 'Poppins', sans-serif;
-  transition: background-color 0.3s ease;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease;
 }
 
-/* Ensure no spacing around the body */
-html, body {
-  height: 100%;
-  width: 100%;
-}
+/* === NAVIGATION STYLES === */
 
-/* === Shared Rounded Corners and Animations === */
-.card-panel, .btn, nav, input, textarea {
-  border-radius: 12px;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.card-panel:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
-}
-
-/* === Navigation Styles === */
+/* Ensure the nav-wrapper is flexbox to align the logo on the left and the links on the right */
 .nav-wrapper {
-  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
   height: 64px;
 }
 
@@ -39,20 +24,21 @@ html, body {
   border-radius: 0 0 12px 12px;
 }
 
+/* Brand logo on the left */
 .brand-logo {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: #E0E0E0;
-  display: flex;
-  align-items: center;
   text-transform: uppercase;
+  line-height: 64px; /* Ensure vertical alignment */
 }
 
+/* Align navigation links to the right and space them evenly */
 ul.right {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 20px;
 }
 
 .nav-wrapper ul a {
@@ -61,17 +47,12 @@ ul.right {
   transition: color 0.3s ease;
 }
 
+/* Hover effect for nav links */
 .nav-wrapper ul a:hover {
   color: #5865F2;
 }
 
-/* === Mobile Navigation === */
-.sidenav-trigger {
-  display: flex;
-  align-items: center;
-  color: #E0E0E0;
-}
-
+/* === MOBILE NAVIGATION MENU === */
 .sidenav {
   background-color: #2F3136;
   padding-top: 20px;
@@ -88,6 +69,13 @@ ul.right {
   background-color: #5865F2;
   color: #FFFFFF;
   transition: background-color 0.3s ease;
+}
+
+/* Sidenav trigger for mobile */
+.sidenav-trigger {
+  display: flex;
+  align-items: center;
+  color: #E0E0E0;
 }
 
 /* === Discord Button Styles === */
@@ -115,42 +103,18 @@ ul.right {
   vertical-align: middle;
 }
 
-/* === Typography and Headings === */
-h1, h5 {
-  color: #E0E0E0;
-  margin: 0 0 10px;
-}
-
-h5 {
-  font-weight: 300;
-}
-
-/* === Button Animations === */
-.btn {
-  transition: background-color 0.3s, transform 0.2s ease;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
 /* === Card Styles === */
 .card-panel {
   background-color: #2C2F33;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .card-panel:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-#dashbots {
-  font-family: 'Poppins', sans-serif;
-  color: #7289DA;
-  user-select: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  transform: translateY(-5px);
 }
 
 /* === Footer Credit === */
@@ -161,13 +125,41 @@ h5 {
   color: #E0E0E0;
 }
 
-/* === Input Fields === */
+/* === Typography === */
+h1, h5 {
+  color: #E0E0E0;
+  margin: 0 0 10px;
+}
+
+h5 {
+  font-weight: 300;
+}
+
+#dashbots {
+  font-family: 'Poppins', sans-serif;
+  color: #7289DA;
+  user-select: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* === Buttons === */
+.btn {
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* === Form Fields === */
 input, textarea {
   padding: 12px;
   font-size: 1rem;
   border: none;
   background-color: #2C2F33;
   color: #E0E0E0;
+  border-radius: 8px;
 }
 
 input::placeholder, textarea::placeholder {
