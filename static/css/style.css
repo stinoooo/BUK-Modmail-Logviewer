@@ -25,50 +25,29 @@ body {
 /* === NAVIGATION STYLES === */
 .nav-wrapper {
     display: flex;
-    justify-content: space-between; /* Ensures the logo is on the left, and button is on the right */
+    justify-content: center; /* Center the logo */
     align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-fixed nav {
-    background-color: #2F3136; /* Background color of the navbar */
-    border-radius: 0 0 12px 12px;
-    padding: 10px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .brand-logo {
-    font-family: 'Whitney', sans-serif;
+    position: absolute; /* Absolute positioning to keep the logo centered */
+    left: 50%;
+    transform: translateX(-50%); /* Center the logo horizontally */
     font-size: 1.6rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.8); /* Color for the logo text */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-left: 10px; /* Adjusts spacing for the logo */
 }
 
-.nav-wrapper ul {
+.sidenav-trigger {
+    position: absolute;
+    left: 0;
     display: flex;
     align-items: center;
-    list-style-type: none;
 }
 
-.nav-wrapper ul li {
-    margin-left: 20px;
-}
-
-.nav-wrapper ul a {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-wrapper ul a:hover {
-    color: #FFFFFF;
-    background-color: #7289DA; /* Discord-like blue for hover effect */
+ul.right {
+    position: absolute;
+    right: 0;
 }
 
 /* === DISCORD BUTTON IN NAV === */
