@@ -1,4 +1,3 @@
-
 /* Custom Modern Stylesheet - Discord-inspired */
 
 /* General Body Styles */
@@ -23,32 +22,81 @@ body {
   transform: translateY(-5px);
 }
 
-/* Navigation Styles */
-nav, #nav-mobile, #nav-dash {
-  background-color: #2F3136;  /* Slightly lighter than the body for separation */
-  border-radius: 0 0 12px 12px;
+/* === NAVIGATION STYLES === */
+.nav-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-nav ul a {
-  font-size: 1.2rem;
-  color: #E0E0E0;
+.navbar-fixed nav {
+    background-color: #2F3136; /* Slightly lighter than the body */
+    border-radius: 0 0 12px 12px;
 }
 
-nav ul a:hover {
-  color: #5865F2;  /* Discord-like blue */
+.brand-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #E0E0E0;
 }
 
-/* Button Styles */
-.btn {
-  background-color: #5865F2; /* Discord blue */
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 8px;
+.nav-wrapper ul a {
+    font-size: 1.2rem;
+    color: #E0E0E0;
+    transition: color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #4E5CDB;
-  transform: scale(1.05);
+.nav-wrapper ul a:hover {
+    color: #5865F2;  /* Discord-like blue */
+}
+
+.sidenav-trigger {
+    display: flex;
+    align-items: center;
+    color: #E0E0E0;
+}
+
+.sidenav {
+    background-color: #2F3136;
+    padding-top: 20px;
+}
+
+.sidenav li a {
+    color: #E0E0E0;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.sidenav li a:hover {
+    background-color: #5865F2;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease;
+}
+
+/* Discord Button Styles */
+.discord-btn {
+    background-color: #5865F2;
+    color: #FFF;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.discord-btn:hover {
+    background-color: #4E5CDB;
+    transform: scale(1.05);
+}
+
+.discord-btn i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
 }
 
 /* Main Heading */
