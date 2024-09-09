@@ -89,8 +89,9 @@ body {
 }
 
 .discord-btn:hover {
-  background-color: #4E5CDB;
+  background-color: #4E5CDB; /* Darker Discord-like blue */
   transform: scale(1.05);
+  color: #FFF;  /* Ensure text remains white */
 }
 
 .discord-btn i {
