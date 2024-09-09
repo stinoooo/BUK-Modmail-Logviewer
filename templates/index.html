@@ -1,22 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Main Container with Flow Lines Background -->
+<!-- Main Container with Background Effect -->
 <div class="center-align" style="position: relative; overflow: hidden;">
 
-    <!-- Dynamic Flow Line Background SVG -->
-    <div class="flow-lines-container" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;">
-        <svg width="100%" height="100%" class="flow-lines" style="z-index: 0;">
-            <defs></defs>
-            <g>
-                <!-- Flow Line 1 -->
-                <path class="flow-line" d="M0 200 C 300 100, 500 300, 800 200" stroke="#7289DA" stroke-width="2" fill="none"/>
-                <!-- Flow Line 2 -->
-                <path class="flow-line" d="M0 400 C 300 300, 500 500, 800 400" stroke="#5865F2" stroke-width="2" fill="none"/>
-                <!-- Flow Line 3 -->
-                <path class="flow-line" d="M0 600 C 300 500, 500 700, 800 600" stroke="#7289DA" stroke-width="2" fill="none"/>
-            </g>
-        </svg>
+    <!-- Dynamic Background SVG with multiple flow lines -->
+    <div class="react-flow__pane" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;">
+        <div class="react-flow__viewport react-flow__container" style="transform: translate(0px, 0px) scale(1);">
+            <svg width="100%" height="100%" class="react-flow__edges react-flow__container" style="z-index: 0;">
+                <defs></defs>
+                <g>
+                    <!-- Multiple animated flow lines -->
+                    <path d="M100 200 C 200 100, 300 300, 400 200" stroke="#7289DA" stroke-width="2" fill="none"/>
+                    <path d="M500 400 C 600 300, 700 500, 800 400" stroke="#5865F2" stroke-width="2" fill="none"/>
+                    <path d="M50 50 C 150 250, 250 50, 350 250" stroke="#7289DA" stroke-width="2" fill="none"/>
+                    <path d="M200 500 C 300 300, 400 600, 500 400" stroke="#5865F2" stroke-width="2" fill="none"/>
+                    <path d="M600 100 C 700 200, 800 100, 900 200" stroke="#7289DA" stroke-width="2" fill="none"/>
+                    <path d="M700 600 C 800 400, 900 700, 1000 500" stroke="#5865F2" stroke-width="2" fill="none"/>
+                </g>
+            </svg>
+        </div>
     </div>
 
     <!-- Main Animated LOGVIEWER Title -->
@@ -36,7 +39,7 @@
             BUK's Moderation Tool for Viewing Modmail Ticket Transcripts
         </h5>
         
-        <!-- Info Section -->
+        <!-- Section for additional information -->
         <div class="info-section animated fadeInUp" style="margin-top: 30px;">
             <div class="row">
                 <!-- Info Block 1 -->
@@ -69,5 +72,145 @@
         Created by <span class="discord">bossman</span> for BUK's Moderation Team.
     </div>
 </div>
+
+<!-- Custom CSS for animations and visual elements -->
+<style>
+    /* LOGVIEWER Text Animation */
+    .text-animated {
+        display: inline-block;
+        animation: bounce 0.5s ease-in-out infinite alternate;
+    }
+
+    .text-animated:nth-child(odd) {
+        animation-delay: 0.1s;
+    }
+
+    .text-animated:nth-child(even) {
+        animation-delay: 0.2s;
+    }
+
+    @keyframes bounce {
+        to {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Info Block Hover Animation */
+    .info-block {
+        background-color: #2F3136;
+        border-radius: 10px;
+        color: #E0E0E0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .info-block:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .info-block:hover:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: rgba(88, 101, 242, 0.1); /* Subtle glow effect */
+        transform: skewX(-30deg);
+        animation: hoverGlow 0.6s ease-in-out forwards;
+    }
+
+    @keyframes hoverGlow {
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* Footer Credit Animation */
+    .footer-credit {
+        margin-top: 30px;
+        font-size: 1rem;
+        color: #E0E0E0;
+    }
+
+    /* Fade-in Up Animation */
+    .animated.fadeInUp {
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Fade-in Down Animation */
+    .animated.fadeInDown {
+        animation: fadeInDown 1s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Fade-in Left Animation */
+    .animated.fadeInLeft {
+        animation: fadeInLeft 1s ease forwards;
+    }
+
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Delays for the info blocks */
+    .animated.delay-0.5s {
+        animation-delay: 0.5s;
+    }
+
+    .animated.delay-1s {
+        animation-delay: 1s;
+    }
+
+    .animated.delay-1.5s {
+        animation-delay: 1.5s;
+    }
+
+    /* Background SVG Animation */
+    svg path {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 0;
+        animation: dash 4s linear infinite;
+    }
+
+    @keyframes dash {
+        to {
+            stroke-dashoffset: -200;
+        }
+    }
+</style>
 
 {% endblock %}
