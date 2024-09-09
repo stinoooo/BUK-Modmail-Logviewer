@@ -33,13 +33,13 @@
     <!-- Main Log Entry Section -->
     <div class="entry-container container" style="margin-top: 20px;">
         <!-- Log Information -->
-        <div class="card-panel hoverable log-info-panel">
+        <div class="card-panel hoverable log-info-panel z-depth-3">
             <div class="row valign-wrapper">
-                <div class="col s2">
+                <div class="col s2 center-align">
                     <img class="circle responsive-img hoverable log-avatar" 
                         src="{{ log_entry.recipient.avatar_url }}" 
                         onerror="this.src='{{ log_entry.recipient.default_avatar_url }}'" 
-                        alt="Recipient Avatar">
+                        alt="Recipient Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
                 </div>
                 <div class="col s10">
                     <h5 class="log-title white-text">Thread Logs - 
@@ -70,53 +70,53 @@
         </div>
 
         <!-- Chat Log Messages -->
-        <div class="chatlog card-panel hoverable">
+        <div class="chatlog card-panel hoverable z-depth-2" style="padding: 20px; background-color: #2C3E50;">
             {% for group in log_entry.message_groups %}
-                <div class="{{group.type}} chatlog__message-group active_hover" onclick="hoverIt(this)">
+                <div class="row valign-wrapper {{group.type}} chatlog__message-group active_hover" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #444;">
                     <!-- Avatar -->
-                    <div class="chatlog__author-avatar-container">
+                    <div class="col s2 center-align">
                         <img class="chatlog__author-avatar circle responsive-img" 
                              src="{{ group.author.avatar_url }}" 
                              onerror="this.src='{{ group.author.default_avatar_url }}'" 
-                             alt="Author Avatar">
+                             alt="Author Avatar" style="width: 70px; height: 70px; border-radius: 50%;">
                     </div>
                     <!-- Messages -->
-                    <div class="chatlog__messages">
-                        <span class="chatlog__author-name" title="{{ group.author | string | e }}">
+                    <div class="col s10">
+                        <span class="chatlog__author-name white-text" style="font-weight: bold;" title="{{ group.author | string | e }}">
                             {{ group.author.name | e }}
                         </span>
                         <!-- Message Tags -->
                         {% if group.type == 'thread_message' %}
                             {% if group.author.mod %}
-                                <span class="mod-tag">Reply</span>
+                                <span class="new badge blue" data-badge-caption="Reply"></span>
                             {% endif %}
                         {% elif group.type == 'anonymous' %}
-                            <span class='mod-tag'>Anon</span>
+                            <span class='new badge red' data-badge-caption="Anon"></span>
                         {% elif group.type == 'internal' %}
-                            <span class='internal-tag'>Internal</span>
+                            <span class='new badge orange' data-badge-caption="Internal"></span>
                         {% else %}
-                            <span>took a note</span><span class="system-tag">note</span>
+                            <span class="new badge grey" data-badge-caption="Note"></span>
                         {% endif %}
-                        <span class="chatlog__timestamp">{{ group.created_at }}</span>
+                        <span class="chatlog__timestamp grey-text text-lighten-1">{{ group.created_at }}</span>
 
                         <!-- Message Content -->
                         {% for message in group.messages %}
                             {% if message.content %}
-                                <div class="chatlog__content" id="{{ message.id }}">
-                                    {{ message.content }}
+                                <div class="chatlog__content" id="{{ message.id }}" style="margin-top: 10px;">
+                                    <p class="white-text">{{ message.content }}</p>
                                     {% if message.edited %}
-                                        <span class="chatlog__edited-timestamp">(edited)</span>
+                                        <span class="chatlog__edited-timestamp grey-text text-lighten-1">(edited)</span>
                                     {% endif %}
                                 </div>
                             {% endif %}
                             <!-- Attachments -->
                             {% for attachment in message.attachments %}
-                                <div class="chatlog__attachment" id="{{ message.id }}">
+                                <div class="chatlog__attachment" id="{{ message.id }}" style="margin-top: 10px;">
                                     <a href="{{ attachment.url }}">
                                         {% if attachment.is_image %}
-                                            <img class="chatlog__attachment-thumbnail" src="{{ attachment.url }}" alt="attachment" />
+                                            <img class="chatlog__attachment-thumbnail responsive-img" src="{{ attachment.url }}" alt="attachment" style="max-width: 200px; border-radius: 10px;" />
                                         {% else %}
-                                            Attachment: {{ attachment.filename | e }}
+                                            <span class="white-text">Attachment: {{ attachment.filename | e }}</span>
                                         {% endif %}
                                     </a>
                                 </div>
@@ -128,22 +128,21 @@
 
             <!-- Close Thread Message -->
             {% if not log_entry.open %}
-                <div class="chatlog__message-group close">
-                    <div class="chatlog__author-avatar-container">
+                <div class="row valign-wrapper chatlog__message-group close" style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #444;">
+                    <div class="col s2 center-align">
                         <img class="chatlog__author-avatar circle responsive-img" 
                              src="{{ log_entry.system_avatar_url }}" 
-                             alt="System Avatar">
+                             alt="System Avatar" style="width: 70px; height: 70px; border-radius: 50%;">
                     </div>
-                    <div class="chatlog__messages">
-                        <span class="chatlog__author-name" title="{{ log_entry.closer | string | e }}">
+                    <div class="col s10">
+                        <span class="chatlog__author-name white-text" title="{{ log_entry.closer | string | e }}">
                             {{ log_entry.closer.name | e }}
                         </span>
-                        <span>closed the thread</span>
-                        <span class="system-tag">System</span>
-                        <span class="chatlog__timestamp">{{ log_entry.human_closed_at | e }}</span>
+                        <span class="new badge green" data-badge-caption="Closed"></span>
+                        <span class="chatlog__timestamp grey-text text-lighten-1">{{ log_entry.human_closed_at | e }}</span>
                         {% if log_entry.close_message %}
-                            <div class="chatlog__content">
-                                {{ log_entry.close_message }}
+                            <div class="chatlog__content" style="margin-top: 10px;">
+                                <p class="white-text">{{ log_entry.close_message }}</p>
                             </div>
                         {% endif %}
                     </div>
