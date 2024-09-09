@@ -118,3 +118,39 @@ h5 {
   font-size: 0.9rem;
   color: #E0E0E0;
 }
+
+/* Main LOGVIEWER Title */
+#dashbots {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #5865F2; /* Discord blurple color */
+}
+
+.text-animated {
+    display: inline-block;
+    animation: bounce 0.5s ease infinite alternate;
+    font-size: inherit;
+    color: #5865F2; /* Apply the blurple color to each letter */
+}
+
+/* Optional Bounce Animation for the Letters */
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px); /* Moves the letters slightly up */
+    }
+}
+
+/* Animation Delay for Sequential Effects */
+.text-animated:nth-child(1) { animation-delay: 0s; }
+.text-animated:nth-child(2) { animation-delay: 0.1s; }
+.text-animated:nth-child(3) { animation-delay: 0.2s; }
+.text-animated:nth-child(4) { animation-delay: 0.3s; }
+.text-animated:nth-child(5) { animation-delay: 0.4s; }
+.text-animated:nth-child(6) { animation-delay: 0.5s; }
+.text-animated:nth-child(7) { animation-delay: 0.6s; }
+.text-animated:nth-child(8) { animation-delay: 0.7s; }
+.text-animated:nth-child(9) { animation-delay: 0.8s; }
