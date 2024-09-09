@@ -158,6 +158,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         // Functions to manage hover effects, scrolling, and toggling internal messages
+        document.addEventListener('DOMContentLoaded', function() {
+            const internalToggle = document.getElementById('internal_toggle');
+            const internalMessages = document.querySelectorAll('.internal');
+
+            function setInternalMessagesVisibility() {
+                const isChecked = internalToggle.checked;
+                internalMessages.forEach(message => {
+                    message.style.display = isChecked ? 'flex' : 'none';
+                });
+            }
+
+            // Set initial visibility based on toggle state
+            setInternalMessagesVisibility();
+
+            // Add event listener for the toggle switch
+            internalToggle.addEventListener('change', setInternalMessagesVisibility);
+
+            // Function to highlight messages based on URL hash
+            function highlightMessage() {
+                const messageId = window.location.hash.substring(1);
+                if (messageId) {
+                    const message = document.getElementById(messageId);
+                    if (message) {
+                        const group = message.closest('.chatlog__message-group');
+                        group.classList.add('perma_hover');
+                        scrollToElement(group);
+
+                        // Automatically show internal messages if the highlighted message is internal
+                        if (group.classList.contains('internal') && !internalToggle.checked) {
+                            internalToggle.checked = true;
+                            setInternalMessagesVisibility();
+                        }
+                    }
+                }
+            }
+
+            // Scroll to the highlighted message if there is one in the URL
+            highlightMessage();
+
+            // Function to scroll to an element smoothly
+            function scrollToElement(element) {
+                const y = element.getBoundingClientRect().top + window.scrollY - 70;
+                window.scroll({
+                    top: y,
+                    behavior: 'smooth'
+                });
+            }
+
+            window.addEventListener('hashchange', highlightMessage);
+        });
+
         function hoverIt(elem) {
             for (let child of elem.children[1].children) {
                 if (child.classList.contains('chatlog__content') || child.classList.contains('chatlog__attachment')) {
@@ -179,38 +230,6 @@
 
         window.onhashchange = highlightMessage;
 
-        function highlightMessage() {
-            let message_id = document.location.hash.split('#')[1];
-            if (message_id) {
-                let msg = document.getElementById(message_id);
-                if (msg) {
-                    let group = msg.closest('.chatlog__message-group');
-                    group.classList.add('perma_hover');
-                    scrollToElement(group);
-                }
-            }
-        }
-
-        function scrollToElement(pageElement) {
-            let y = pageElement.getBoundingClientRect().top + window.scrollY - 70;
-            window.scroll({
-                top: y,
-                behavior: 'smooth'
-            });
-        }
-
-        function toggleInternalMessages() {
-            document.querySelectorAll('.internal').forEach(m => {
-                m.style.display = m.style.display === "none" ? "flex" : "none";
-            });
-        }
-
-        // Auto highlight message if linked
-        let initial_group = highlightMessage();
-        if (initial_group && initial_group.classList.contains('internal')) {
-            document.getElementById('internal_toggle').click();
-            scrollToElement(initial_group);
-        }
     </script>
 
 </body>
