@@ -1,19 +1,16 @@
-/* Custom Modern Stylesheet - Discord-inspired */
-
-/* General Body Styles */
+/* === General Styles === */
 body {
   background-color: #1E1F22;  /* Discord's dark background */
   color: #E0E0E0;  /* Light text for contrast */
   font-family: 'Poppins', sans-serif;
   transition: background-color 0.3s ease;
+  margin: 0;
+  padding: 0;
 }
 
-/* Rounded Corners and Animations */
+/* === Shared Rounded Corners and Animations === */
 .card-panel, .btn, nav, input, textarea {
   border-radius: 12px;
-}
-
-.card-panel, .btn {
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
@@ -22,93 +19,107 @@ body {
   transform: translateY(-5px);
 }
 
-/* === NAVIGATION STYLES === */
+/* === Navigation Styles === */
 .nav-wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-fixed nav {
-    background-color: #2F3136; /* Slightly lighter than the body */
-    border-radius: 0 0 12px 12px;
+  background-color: #2F3136;
+  border-radius: 0 0 12px 12px;
 }
 
 .brand-logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #E0E0E0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #E0E0E0;
+  line-height: 56px;  /* Ensures vertical centering within the navbar */
 }
 
 .nav-wrapper ul a {
-    font-size: 1.2rem;
-    color: #E0E0E0;
-    transition: color 0.3s ease;
-}
-
-.nav-wrapper ul a:hover {
-    color: #5865F2;  /* Discord-like blue */
-}
-
-.sidenav-trigger {
-    display: flex;
-    align-items: center;
-    color: #E0E0E0;
-}
-
-.sidenav {
-    background-color: #2F3136;
-    padding-top: 20px;
-}
-
-.sidenav li a {
-    color: #E0E0E0;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border-radius: 8px;
-}
-
-.sidenav li a:hover {
-    background-color: #5865F2;
-    color: #FFFFFF;
-    transition: background-color 0.3s ease;
-}
-
-/* Discord Button Styles */
-.discord-btn {
-    background-color: #5865F2;
-    color: #FFF;
-    padding: 10px 20px;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
-}
-
-.discord-btn:hover {
-    background-color: #4E5CDB;
-    transform: scale(1.05);
-}
-
-.discord-btn i {
-    margin-right: 8px;
-    font-size: 1.2rem;
-    vertical-align: middle;
-}
-
-/* Main Heading */
-#dashbots {
-  font-family: 'Poppins', sans-serif;
-  color: #7289DA; /* Discord-like purple */
-  user-select: none;
-  font-weight: 600;
+  font-size: 1.2rem;
+  color: #E0E0E0;
   transition: color 0.3s ease;
 }
 
-/* Card Styles */
+.nav-wrapper ul a:hover {
+  color: #5865F2;  /* Discord-like blue */
+}
+
+/* === Mobile Navigation === */
+.sidenav-trigger {
+  display: flex;
+  align-items: center;
+  color: #E0E0E0;
+}
+
+.sidenav {
+  background-color: #2F3136;
+  padding-top: 20px;
+}
+
+.sidenav li a {
+  color: #E0E0E0;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.sidenav li a:hover {
+  background-color: #5865F2;
+  color: #FFFFFF;
+  transition: background-color 0.3s ease;
+}
+
+/* === Discord Button Styles === */
+.discord-btn {
+  background-color: #5865F2;
+  color: #FFF;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: none;
+}
+
+.discord-btn:hover {
+  background-color: #4E5CDB;
+  transform: scale(1.05);
+}
+
+.discord-btn i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+/* === Typography and Headings === */
+h1, h5 {
+  color: #E0E0E0;
+}
+
+h5 {
+  font-weight: 300;
+}
+
+/* === Animations for Buttons === */
+.btn {
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* === Card Styles === */
 .card-panel {
   background-color: #2C2F33;
   border-radius: 12px;
@@ -119,33 +130,54 @@ body {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-h1, h5 {
-  color: #E0E0E0;
+/* === Main Heading Style === */
+#dashbots {
+  font-family: 'Poppins', sans-serif;
+  color: #7289DA;  /* Discord-like purple */
+  user-select: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-/* Typography */
-h5 {
-  font-weight: 300;
-}
-
-/* Animations for Buttons */
-.btn {
-  transition: background-color 0.3s, transform 0.2s ease;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-/* Discord Brand Color */
-.discord {
-  color: #5865F2;
-}
-
-/* Footer Credit */
+/* === Footer Credit === */
 .footer-credit {
   text-align: center;
   margin-top: 40px;
   font-size: 0.9rem;
   color: #E0E0E0;
+}
+
+/* === Discord Brand Color === */
+.discord {
+  color: #5865F2;
+}
+
+/* === Additional Utility Styles === */
+/* Ensure no spacing around the body */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Style for input fields and textareas */
+input, textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  background-color: #2C2F33;
+  color: #E0E0E0;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Custom scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #5865F2;
+  border-radius: 10px;
 }
