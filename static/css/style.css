@@ -1,81 +1,94 @@
 
-/* Custom Stylesheet */
-/* Override Materialize files for custom styles */
+/* Custom Modern Stylesheet */
 
 /* General Body Styles */
 body {
-  background-color: #F4F7F6;
-  color: #2C3E50;
+  background-color: #1C1E22;  /* Darker background for a sleek modern look */
+  color: #E0E0E0;  /* Light text for better contrast */
   font-family: 'Poppins', sans-serif;
 }
 
 /* Navigation Styles */
 nav, #nav-mobile, #nav-dash {
-  background-color: #34495E;
+  background-color: #292B2F; /* A sleek, neutral dark color for navbar */
 }
 
 #dropdown1 {
-  background-color: #2C3E50;
+  background-color: #2C2F33; /* Neutral grey for dropdown */
 }
 
 /* Button Styles */
 .btn {
-  background-color: #1ABC9C;
+  background-color: #5865F2; /* Slightly lighter purple for a clean look */
   border-radius: 5px;
   text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
 .btn:visited {
-  background-color: #16A085;
+  background-color: #4E5CDB;
 }
 
 .btn:hover {
-  background-color: #148F77;
+  background-color: #3B49D0;
 }
 
 /* Main Heading */
 #dashbots {
   font-family: 'Poppins', sans-serif;
-  color: #34495E;
+  color: #7289DA; /* Maintain original Discord-style purple */
   user-select: none;
   font-weight: 600;
 }
 
-@media (max-width: 435px) {
-  #dashbots {
-    font-size: 10vw;
-  }
-}
-
-/* Card Hover Effect */
+/* Card Styles */
 .card-panel {
-  background-color: #FFFFFF;
+  background-color: #2F3136; /* Dark grey card background */
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
 }
 
 .card-panel:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Typography */
 h1, h5 {
-  color: #2C3E50;
+  color: #E0E0E0;
 }
 
 h5 {
   font-weight: 300;
 }
 
-/* Custom Icon Spacing */
-.nav-icon {
-  vertical-align: middle; 
-  margin-left: 10px;
+/* Search Bar */
+.search-bar {
+  padding: 10px;
+  background-color: #40444B;
+  border-radius: 8px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2F3136;
+  color: #E0E0E0;
+  font-size: 16px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  background-color: #3B3E45;
 }
 
 /* Discord Brand Color */
 .discord {
-  color: #7289DA;
+  color: #5865F2;
 }
 
 /* Responsive Padding */
